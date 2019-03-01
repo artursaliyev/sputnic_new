@@ -7,3 +7,8 @@ venv/
 db*
 
 *.pyc
+
+
+input_files/*
+
+finished_files/*

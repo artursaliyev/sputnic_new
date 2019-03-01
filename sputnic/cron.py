@@ -21,40 +21,39 @@ class SputnicCronJob(CronJobBase):
         files = self.list_json_files()
 
         for file in files:
+            print(files)
+            data = self.input_file_name_return_json_data(file)
+
+            if data:
+                    self.save_file_db(data)
+
             try:
-                data = self.input_file_name_return_json_data(file)
-
-                if data:
-                        self.save_file_db(data)
-
-
                 shutil.move(
                     BASE_DIR + '/input_files/' + file,
                     BASE_DIR + '/finished_files/' + file,
                 )
             except:
-                continue
-
+                pass
 
     @staticmethod
     def input_file_name_return_json_data(file_name):
         url = BASE_DIR + '/input_files/' + file_name
         try:
             data = json.load(codecs.open(url, 'r', 'utf-8-sig'), strict=False)
-            return data['data']
+            return data
         except:
             return {}
-
 
     @staticmethod
     def list_json_files():
         path_input_data = BASE_DIR + '/input_files/'
-
-        return os.listdir(path_input_data)
+        path_list = [path for path in os.listdir(path_input_data) if path.endswith('.json')]
+        return path_list
 
     @staticmethod
     def save_file_db(obj_list):
-        for key, obj in enumerate(obj_list):
+
+        for key, obj in enumerate(obj_list['data']):
             try:
                 sputnic_obj = Sputnic.objects.update_or_create(
                                 title=obj['title'],
@@ -65,6 +64,11 @@ class SputnicCronJob(CronJobBase):
                                     'time': obj['time'],
                                     'domain': obj['domain'],
                                     'url': obj['url'],
+
+                                    'route_api': obj_list['route-api'],
+                                    'heading': obj_list['heading'],
+                                    'date_get': obj_list['date'],
+                                    'time_get': obj_list['time'],
                                     }
                                 )
 
