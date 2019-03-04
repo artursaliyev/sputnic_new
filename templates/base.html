@@ -1,0 +1,257 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block bootstrap_css %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global-search.css' %}">
+    {% endblock  %}
+
+    <title>{% block title %}Hello, world!{% endblock %}</title>
+
+</head>
+
+<body>
+
+    {% include '_message.html' %}
+
+    {% include '_top_menu.html' %}
+
+    {% block content %}
+    <!-- asosiy qism-->
+    <div class="container" id="main">
+        <div class="row">
+
+            {% block sort %}
+            <!-- sort qism-->
+            <div class="col-3 navbar-expand-x" id="filter">
+
+                <div class="accordion card" id="natural">
+                    <div class="card-header" id="headingnatural">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#shownatural">
+                         Тональность
+                          </button>
+                    </div>
+
+                    <div id="shownatural" class="collapse show" aria-labelledby="headingnatural" data-parent="#natural">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Нейтральная
+                                    <span class="badge badge-secondary badge-pill">14</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Позитивная
+                                    <span class="badge badge-secondary badge-pill">23</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Негативная
+                                    <span class="badge badge-secondary badge-pill">41</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Смешанная
+                                    <span class="badge badge-secondary badge-pill">21</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion card" id="category">
+                    <div class="card-header" id="headingcategory">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#showcategory">
+                            Категории
+                          </button>
+                    </div>
+
+                    <div id="showcategory" class="collapse show" aria-labelledby="headingcategory" data-parent="#category">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Banks
+                                    <span class="badge badge-secondary badge-pill">14</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Finance
+                                    <span class="badge badge-secondary badge-pill">2</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Industry
+                                    <span class="badge badge-secondary badge-pill">1</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Political party
+                                    <span class="badge badge-secondary badge-pill">1</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion card" id="persons">
+                    <div class="card-header" id="headingpersons">
+                        <button class="btn btn-link" type="button " data-toggle="collapse" data-target="#showpersons ">
+                                        Персоны
+                              </button>
+                    </div>
+                    <div id="showpersons" class="collapse show " aria-labelledby="headingpersons" data-parent="#persons">
+                        <div class="card-body ">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Зафар Нурматов
+                                    <span class="badge badge-secondary badge-pill">24 </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Ислам Каримов
+                                    <span class="badge badge-secondary badge-pill">32</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Шуҳратулла Носиров
+                                    <span class="badge badge-secondary badge-pill">11</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Ҳужжатларни Сохталаштириш
+                                    <span class="badge badge-secondary badge-pill">31</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion card" id="organizations">
+                    <div class="card-header" id="headingorganizations">
+                        <button class="btn btn-link" type="button " data-toggle="collapse" data-target="#showorganizations ">
+                                        Персоны
+                              </button>
+                    </div>
+                    <div id="showorganizations" class="collapse show " aria-labelledby="headingorganizations" data-parent="#organizations">
+                        <div class="card-body ">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Зафар Нурматов
+                                    <span class="badge badge-secondary badge-pill">14</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Ислам Каримов
+                                    <span class="badge badge-primary badge-pill">2</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Шуҳратулла Носиров
+                                    <span class="badge badge-danger badge-pill">1</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Ҳужжатларни Сохталаштириш
+                                    <span class="badge badge-dark badge-pill">1</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endblock %}
+
+            {% block search_result %}
+            <!-- search -->
+            <div class="col-9" id="basic">
+                <div id="search">
+                    <form>
+                        <div class="input-group mb-3 ">
+                            <input type="text " class="form-control " placeholder="Я ищу... ">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="button-addon2">Найти</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row sort">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-body" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                                Новости
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Новости</a>
+                                <a class="dropdown-item" href="#">социальные сети</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-body" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                                На любом языке
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">На любом языке</a>
+                                <a class="dropdown-item" href="#">На английском</a>
+                                <a class="dropdown-item" href="#">На русском</a>
+                                <a class="dropdown-item" href="#">На узбекском</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row sort-btn">
+                        <div class="col-9">
+                            <div class="btn-group " role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" disabled>Сортировать по: </button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm">Дата публикации</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm">Источник</button>
+                            </div>
+                        </div>
+                        <div class="col-3 pull-right">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" disabled> Найдено: 19 док.</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="result">
+                    <div class="col_1">1.</div>
+                    <div class="col_11">
+                        <h5> <a href="#" class="text-primary"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </a></h5>
+                        <h6> <a href="#" class="text-success"> http://stanradar.com/news/full/33199-sotsialnyj-eksperiment-kak-ja-nedelju-nosila-platok-v-tashkente.html </a></h6>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores dolore eos labore laboriosam, nisi pariatur quibusdam ratione repellendus voluptates! At blanditiis culpa error illo laudantium optio quis ratione temporibus!</p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            {% endblock %}
+
+        </div>
+
+    </div>
+    {% endblock %}
+
+    {% include '_js_scripts.html' %}
+
+    {% block script %}
+
+        <script>
+            var infinite = new Waypoint.Infinite({
+              element: $('.infinite-container')[0],
+              onBeforePageLoad: function () {
+                $('.loading').show();
+              },
+              onAfterPageLoad: function ($items) {
+                $('.loading').hide();
+              }
+            });
+        </script>
+
+    {% endblock %}
+
+</body>
+
+</html>

@@ -21,7 +21,6 @@ class SputnicCronJob(CronJobBase):
         files = self.list_json_files()
 
         for file in files:
-            print(files)
             data = self.input_file_name_return_json_data(file)
 
             if data:
