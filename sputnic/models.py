@@ -28,8 +28,8 @@ class Sputnic(models.Model):
     time_get = models.CharField(max_length=100, blank=True)
 
     class Meta:
-        ordering = ['date', ]
-        index_together = ('title', 'author', 'description', 'date', 'time', 'domain', 'url')
+        ordering = ['date_get']
+        index_together = ('title', 'author', 'description', 'date_get', 'time_get', 'domain', 'url')
 
 
 

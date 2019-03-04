@@ -1,0 +1,96 @@
+body {
+    background: #16385e;
+    /*background: white;*/
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1600px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container {
+        max-width: 1350px;
+    }
+}
+
+#main {
+    margin-top: 10px;
+}
+
+.card {
+    margin-bottom: 10px;
+    border-radius: 0px;
+}
+
+.card-header {
+    padding: 0;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.list-group>.list-group-item {
+    border: 0px;
+    padding: 5px 10px;
+}
+
+.sort .dropdown {
+    float: left;
+    padding-left: 20px;
+    margin-top: -10px;
+}
+
+.sort-btn {
+    padding: 15px;
+}
+
+#basic {
+    background: white;
+    padding: 0;
+    min-height: 95vh;
+    border: 2px solid #020c22;
+    border-radius: 1px;
+    box-shadow: 1px 1px 20px 2px #020c22;
+    /*box-shadow: inset 0px 0px 5px #020c22;*/
+}
+
+#search {
+    border-radius: 2px;
+    border-bottom: 1px dotted #aaa;
+    padding: 0 20px;
+    /*background: #f1f1f1;*/
+}
+
+#search .input-group {
+    margin: 0;
+    padding-top: 20px;
+}
+
+.pull-right {
+    text-align: right;
+    padding: 0px;
+}
+
+#result {
+    padding: 10px;
+}
+
+
+.col-12 {
+    padding: 0 30px;
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.col-12 h5 {
+    font-size: 16px;
+    padding: 3px;
+}
+
+.col-12 h6 {
+    font-size: 13px;
+    padding: 3px;
+}

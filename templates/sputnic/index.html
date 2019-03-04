@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block sort %}
+<div class="col-3 navbar-expand-x" id="filter">
+
+    <div class="accordion card" id="natural">
+        <div class="card-header" id="headingnatural">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#shownatural">
+             Тональность
+              </button>
+        </div>
+
+        <div id="shownatural" class="collapse show" aria-labelledby="headingnatural" data-parent="#natural">
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Нейтральная
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Позитивная
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Негативная
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Смешанная
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="category">
+        <div class="card-header" id="headingcategory">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#showcategory">
+                Категории
+              </button>
+        </div>
+
+        <div id="showcategory" class="collapse show" aria-labelledby="headingcategory" data-parent="#category">
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Banks
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Finance
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Industry
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Political party
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="persons">
+        <div class="card-header" id="headingpersons">
+            <button class="btn btn-link" type="button " data-toggle="collapse" data-target="#showpersons ">
+                            Персоны
+                  </button>
+        </div>
+        <div id="showpersons" class="collapse show " aria-labelledby="headingpersons" data-parent="#persons">
+            <div class="card-body ">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Зафар Нурматов
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Ислам Каримов
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Шуҳратулла Носиров
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Ҳужжатларни Сохталаштириш
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="accordion card" id="organizations">
+        <div class="card-header" id="headingorganizations">
+            <button class="btn btn-link" type="button " data-toggle="collapse" data-target="#showorganizations ">
+                            Персоны
+                  </button>
+        </div>
+        <div id="showorganizations" class="collapse show " aria-labelledby="headingorganizations" data-parent="#organizations">
+            <div class="card-body ">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Зафар Нурматов
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Ислам Каримов
+                        <span class="badge badge-primary badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Шуҳратулла Носиров
+                        <span class="badge badge-danger badge-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Ҳужжатларни Сохталаштириш
+                        <span class="badge badge-dark badge-pill">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block search_result %}
+    <!-- search -->
+    <div class="col-9" id="basic">
+                <div id="search">
+
+                    <form method="get" action=" {% url 'sputnic:search' %}">
+                        <div class="input-group mb-3 ">
+                            <input type="text" name="search" class="form-control " placeholder="Я ищу... " value="{{ search }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Найти</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row sort">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-body" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                                Новости
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Новости</a>
+                                <a class="dropdown-item" href="#">социальные сети</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-body" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                                На любом языке
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">На любом языке</a>
+                                <a class="dropdown-item" href="#">На английском</a>
+                                <a class="dropdown-item" href="#">На русском</a>
+                                <a class="dropdown-item" href="#">На узбекском</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row sort-btn">
+                        <div class="col-9">
+                            <div class="btn-group " role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" disabled>Сортировать по: </button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm">Дата публикации</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm">Источник</button>
+                            </div>
+                        </div>
+                        <div class="col-3 pull-right">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
+                                Найдено:{{ count }}</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="result" class="container">
+
+                    {% for object in object_list %}
+                        <div class="row">
+                        <div class="col-12">
+                            <h5> <a href="#" class="text-primary">{{ object.title | truncatechars:90 }}</a></h5>
+                            <h6> <a href="#" class="text-success">{{ object.url | truncatechars:90 }}</a></h6>
+                            <p>{{ object.description | truncatechars:200 }}</p>
+                             <h6 class="text-secondary">Дата публикации:  {{ object.date_get }}</h6>
+                        </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="offset-3 col-md-4">
+                            <nav aria-label="..." class="align-content-center">
+                                <ul class="pagination">
+
+                                    <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
+                                        {% if page_obj.has_previous %}
+                                            <a class="page-link" href="?search={{ search }}&page={{ page_obj.previous_page_number }}">Предыдующий</a>
+                                        {% else %}
+                                            <a class="page-link" href="">Предыдующий</a>
+                                        {% endif %}
+                                    </li>
+
+
+                                    {% for n in page_obj.paginator.page_range %}
+
+                                        {% if page_obj.number == n %}
+
+                                            <li class="page-item active" aria-current="page">
+                                                <span class="page-link">{{ n }}
+                                                <span class="sr-only">(current)</span>
+                                                </span>
+                                            </li>
+
+                                        {% elif n > page_obj.number|add:-5 and  n < page_obj.number|add:5 %}
+
+                                        <li class="page-item"><a class="page-link" href="?search={{ search }}&page={{ n }}">{{ n }}</a></li>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+
+                                    <li class="page-item {% if not page_obj.has_next %} disabled {% endif %}">
+                                        {% if page_obj.has_next %}
+                                            <a class="page-link" href="?search={{ search }}&page={{ page_obj.next_page_number }}">Следующий</a>
+                                        {% else %}
+                                            <a class="page-link" href="">Следующий</a>
+                                        {% endif %}
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+
+    </div>
+
+
+{% endblock %}
