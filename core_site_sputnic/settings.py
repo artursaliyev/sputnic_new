@@ -25,8 +25,9 @@ SECRET_KEY = '1s#^%ygp6@pnskugnh15@*cq%%x^_wip44n@j*hq#19re90^yq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
+INTERNAL_IPS = ('127.0.0.1', 'localhost')
 
 # Application definition
 
@@ -40,9 +41,12 @@ INSTALLED_APPS = [
     'sputnic',
     'django_extensions',
     'django_cron',
+    'debug_toolbar',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,12 +81,25 @@ WSGI_APPLICATION = 'core_site_sputnic.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -140,9 +157,4 @@ CRON_CLASSES = [
 # ALLOW_PARALLEL_RUNS = True
 
 SHELL_PLUS = 'ipython'
-
-
-
-
-
 

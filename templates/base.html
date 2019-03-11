@@ -7,10 +7,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% block bootstrap_css %}
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/global-search.css' %}">
     {% endblock  %}
 
@@ -232,24 +233,6 @@
         </div>
 
     </div>
-    {% endblock %}
-
-    {% include '_js_scripts.html' %}
-
-    {% block script %}
-
-        <script>
-            var infinite = new Waypoint.Infinite({
-              element: $('.infinite-container')[0],
-              onBeforePageLoad: function () {
-                $('.loading').show();
-              },
-              onAfterPageLoad: function ($items) {
-                $('.loading').hide();
-              }
-            });
-        </script>
-
     {% endblock %}
 
 </body>

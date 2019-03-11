@@ -1,15 +1,12 @@
-from django.db.models import Q
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.contrib.postgres.search import SearchVector
+from django.views.generic import ListView, DetailView
+from django.views.generic.base import TemplateView
 
 from sputnic.models import Sputnic
 
 
-def index(request):
-    return render(
-        request=request,
-        template_name='sputnic/index.html'
-    )
+class IndexView(TemplateView):
+    template_name = 'sputnic/index.html'
 
 
 class SputnicSearchView(ListView):
@@ -19,16 +16,30 @@ class SputnicSearchView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(Q(title__iregex=self.request.GET.get('search', '')) |
-                       Q(description__iregex=self.request.GET.get('search', '')))
-        return qs
+
+        qs_a = qs.annotate(search=SearchVector('title', 'description', config='russian')).\
+            filter(search=self.request.GET.get('search', ''))
+
+        if not qs_a:
+            print(qs_a)
+            query = self.request.GET.get('search', '').split()
+            query = " & ".join(query)
+            if query:
+                query += ":*"
+
+            qs_b = qs.extra(where=['search_vector @@ (to_tsquery(%s)) = true'], params=[query])
+            return qs_b
+
+        return qs_a
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
-        context['count'] = self.get_queryset().count()
         context['title'] = 'Search results'
         context['search'] = self.request.GET.get('search', '')
         return context
 
 
+class SputnicDetailView(DetailView):
+    model = Sputnic
+    template_name = 'sputnic/detail.html'
 

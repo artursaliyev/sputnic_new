@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/global-search-info.css' %}">
+{% endblock  %}
+
+{% block search_result %}
+
+        <div class="col-9" id="basic">
+
+            <div id="result">
+                <div class="col-12">
+                    <h4>  {{ object.title }}</h4>
+                    <h6> <a href="{{ object.url }}" class="text-success"> {{ object.url | truncatechars:30}}</a></h6>
+                    <h6 class="text-secondary"> Дата публикации: {{ object.date_get }}</h6>
+                    <p> {{ object.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+

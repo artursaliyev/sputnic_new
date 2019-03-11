@@ -182,7 +182,7 @@
                         </div>
                         <div class="col-3 pull-right">
                             <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
-                                Найдено:{{ count }}</button>
+                                Найдено:{{ paginator.count }}</button>
                         </div>
 
                     </div>
@@ -194,9 +194,9 @@
                     {% for object in object_list %}
                         <div class="row">
                         <div class="col-12">
-                            <h5> <a href="#" class="text-primary">{{ object.title | truncatechars:90 }}</a></h5>
-                            <h6> <a href="#" class="text-success">{{ object.url | truncatechars:90 }}</a></h6>
-                            <p>{{ object.description | truncatechars:200 }}</p>
+                            <h5> <a href="{{ object.get_absolute_url }}" class="text-primary">{{ object.title | truncatechars:90}}</a></h5>
+                            <h6> <a href="{{ object.url }}" class="text-success">{{ object.url | truncatechars:90 }}</a></h6>
+                            <p>{{ object.description | truncatechars:300 }}</p>
                              <h6 class="text-secondary">Дата публикации:  {{ object.date_get }}</h6>
                         </div>
                         </div>
@@ -255,5 +255,6 @@
 
     </div>
 
+{% include '_js_scripts.html' %}
 
 {% endblock %}

@@ -12,3 +12,5 @@ db*
 input_files/*
 
 finished_files/*
+
+pg_data/
